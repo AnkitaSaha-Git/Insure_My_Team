@@ -9,6 +9,9 @@ import com.example.Insure.My.Team.Repository.InsurancePolicyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class InsurancePolicyService {
 
@@ -18,15 +21,48 @@ public class InsurancePolicyService {
     @Autowired
     private ClientRepository clientRepository;
 
-    public String addPolicy(InsurancePolicyDTO insurancePolicyDTO, int id){
-        Client client=clientRepository.findById(id);
+    public String addPolicy(InsurancePolicyDTO insurancePolicyDTO){
+        int clientId=insurancePolicyDTO.getClientId();
+       Client  client=clientRepository.findById(clientId);
+
         InsurancePolicy insurancePolicy= new InsurancePolicy();
+        insurancePolicy.setPolicyNo(insurancePolicyDTO.getPolicyNo());
         insurancePolicy.setEndDate(insurancePolicyDTO.getEndDate());
         insurancePolicy.setStartDate(insurancePolicyDTO.getStartDate());
         insurancePolicy.setCoverageAmount(insurancePolicyDTO.getCoverageAmount());
-        insurancePolicyDTO.setPolicy(insurancePolicyDTO.getPolicy());
-        insurancePolicyRepository.save(insurancePolicy);
+        insurancePolicy.setPolicy(insurancePolicyDTO.getPolicy());
+
+        //Setting the foreign key attribute in child class
+        insurancePolicy.setClient(client);
+
+        List<InsurancePolicy> insurancePolicyList=client.getInsurancePolicies();
+        insurancePolicyList.add(insurancePolicy);
         clientRepository.save(client);
+        insurancePolicyRepository.save(insurancePolicy);
         return "Details added successfully";
+    }
+
+
+
+    public List<InsurancePolicy> getAllInsurancePolicies(){
+//        List<InsurancePolicy> insurancePolicyList=new ArrayList<>();
+//        for(InsurancePolicy insurancePolicy:insurancePolicyRepository.findAll()){
+//            insurancePolicyList.add(insurancePolicy);
+//        }
+        return insurancePolicyRepository.findAll();
+    }
+
+    public InsurancePolicy getInsurancePolicyById(int id){
+            return insurancePolicyRepository.findById(id);
+    }
+
+    public String deleteInsurancePolicy(int id){
+        insurancePolicyRepository.deleteById(id);
+        return "Deleted successfully";
+    }
+
+    public String updateInsurancePolicy(int id, InsurancePolicyDTO updatedInsurancePolicyDTO){
+
+
     }
 }
