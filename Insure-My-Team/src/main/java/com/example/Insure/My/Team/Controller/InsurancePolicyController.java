@@ -22,7 +22,7 @@ public class InsurancePolicyController {
         return insurancePolicyService.addPolicy(insurancePolicyDTO);
     }
 
-    @GetMapping
+    @GetMapping("/getAll")
     public List<InsurancePolicy> getAllInsurancePolicies(){
         return insurancePolicyService.getAllInsurancePolicies();
     }
@@ -37,9 +37,10 @@ public class InsurancePolicyController {
         return insurancePolicyService.deleteInsurancePolicy(id);
     }
 
-    @PutMapping("/{id}")
-    public String updateInsurancePolicy(@PathVariable int id, @RequestBody InsurancePolicy updatedInsurancePolicy){
-
-    }
+//    @PutMapping("/{id}")
+//    public String updateInsurancePolicy(@PathVariable int id, @RequestBody InsurancePolicy updatedInsurancePolicy){
+//
+//        return insurancePolicyService.updateInsurancePolicy(id,updatedInsurancePolicy);
+//    }
 
 }

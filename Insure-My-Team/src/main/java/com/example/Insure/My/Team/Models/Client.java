@@ -1,6 +1,7 @@
 package com.example.Insure.My.Team.Models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,12 +18,13 @@ import java.util.List;
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int client_id;
     private String name;
     private String dateOfBirth;
     private String address;
     private String contactNo;
 
     @OneToMany(mappedBy = "client", cascade =CascadeType.ALL )
+    @JsonIgnore
     private List<InsurancePolicy> insurancePolicies= new ArrayList<>();
 }

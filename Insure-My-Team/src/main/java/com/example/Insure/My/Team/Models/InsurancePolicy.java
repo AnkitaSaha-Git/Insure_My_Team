@@ -20,7 +20,9 @@ public class InsurancePolicy {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int insurance_id;
+    private int client_id;
+
     private int policyNo;
     private String coverageAmount;
     private String startDate;

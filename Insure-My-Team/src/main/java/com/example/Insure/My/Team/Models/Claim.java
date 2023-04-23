@@ -18,6 +18,7 @@ public class Claim {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private int claimNo;
     private Date claimDate;
     private String claimStatus;

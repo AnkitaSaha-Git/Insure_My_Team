@@ -22,7 +22,7 @@ public class InsurancePolicyService {
     private ClientRepository clientRepository;
 
     public String addPolicy(InsurancePolicyDTO insurancePolicyDTO){
-        int clientId=insurancePolicyDTO.getClientId();
+        int clientId=insurancePolicyDTO.getClient_id();
        Client  client=clientRepository.findById(clientId);
 
         InsurancePolicy insurancePolicy= new InsurancePolicy();
@@ -49,7 +49,9 @@ public class InsurancePolicyService {
 //        for(InsurancePolicy insurancePolicy:insurancePolicyRepository.findAll()){
 //            insurancePolicyList.add(insurancePolicy);
 //        }
-        return insurancePolicyRepository.findAll();
+        List<InsurancePolicy> insurancePolicies = insurancePolicyRepository.findAll();
+        return insurancePolicies;
+        //return insurancePolicyRepository.findAll();
     }
 
     public InsurancePolicy getInsurancePolicyById(int id){
@@ -63,6 +65,6 @@ public class InsurancePolicyService {
 
     public String updateInsurancePolicy(int id, InsurancePolicyDTO updatedInsurancePolicyDTO){
 
-
+        return "Updated successfully";
     }
 }

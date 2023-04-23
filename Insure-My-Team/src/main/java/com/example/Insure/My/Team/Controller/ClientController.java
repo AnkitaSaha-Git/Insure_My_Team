@@ -29,8 +29,9 @@ public class ClientController {
         return clientService.getClientById(id);
     }
 
-    @PutMapping("/put/{id}")
-    private String updateClientAddress(@PathVariable int id, @RequestBody String address){
+
+    @PutMapping("/put")
+    private String updateClientAddress(@RequestParam("id") int id, @RequestParam("add") String address){
         return  clientService.updateClientAddress(id,address);
     }
 

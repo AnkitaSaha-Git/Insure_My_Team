@@ -7,11 +7,12 @@ import lombok.Data;
 
 @Data
 public class InsurancePolicyDTO {
+    private int client_id;
     private int policyNo;
     private String coverageAmount;
     private String startDate;
     private String endDate;
-    private int clientId;
+//    private int clientId;
 
     @Enumerated(value = EnumType.STRING)
     private Policy policy;
