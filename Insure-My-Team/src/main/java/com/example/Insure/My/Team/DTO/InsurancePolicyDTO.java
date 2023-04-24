@@ -14,7 +14,7 @@ public class InsurancePolicyDTO {
     private String endDate;
 //    private int clientId;
 
-    @Enumerated(value = EnumType.STRING)
+
     private Policy policy;
 
 }

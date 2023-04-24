@@ -38,7 +38,7 @@ public class InsurancePolicyService {
         List<InsurancePolicy> insurancePolicyList=client.getInsurancePolicies();
         insurancePolicyList.add(insurancePolicy);
         clientRepository.save(client);
-        insurancePolicyRepository.save(insurancePolicy);
+
         return "Details added successfully";
     }
 
@@ -54,8 +54,9 @@ public class InsurancePolicyService {
         //return insurancePolicyRepository.findAll();
     }
 
-    public InsurancePolicy getInsurancePolicyById(int id){
-            return insurancePolicyRepository.findById(id);
+    public InsurancePolicy getInsurancePolicyById(int insurance_id){
+        InsurancePolicy insurancePolicy=insurancePolicyRepository.findById(insurance_id);
+            return insurancePolicy;
     }
 
     public String deleteInsurancePolicy(int id){

@@ -27,9 +27,9 @@ public class InsurancePolicyController {
         return insurancePolicyService.getAllInsurancePolicies();
     }
 
-    @GetMapping("/{id}")
-    public InsurancePolicy getInsurancePolicyById(@PathVariable int id){
-        return insurancePolicyService.getInsurancePolicyById(id);
+    @GetMapping("/{insurance_id}")
+    public InsurancePolicy getInsurancePolicyById(@PathVariable int insurance_id){
+        return insurancePolicyService.getInsurancePolicyById(insurance_id);
     }
 
     @DeleteMapping("/{id}")
