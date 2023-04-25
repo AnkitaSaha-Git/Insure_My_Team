@@ -25,4 +25,19 @@ public class ClaimController {
     public List<Claim> getAllClaims(){
         return claimService.getAllClaims();
     }
+
+    @GetMapping("/{id}")
+    public Claim getClaimById(@PathVariable int id){
+        return claimService.getClaimById(id);
+    }
+
+    @PutMapping("/{id}")
+    public String updateClaimStatus(@PathVariable int id, @RequestParam("status") String claimStatus){
+        return claimService.updateClaimStatus(id, claimStatus);
+    }
+
+//    @DeleteMapping("/{id}")
+//    public String deleteClaimByID(@PathVariable int id){
+//        return claimService.deleteClaimById(id);
+//    }
 }

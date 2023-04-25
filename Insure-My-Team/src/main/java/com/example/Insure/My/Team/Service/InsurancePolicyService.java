@@ -54,8 +54,8 @@ public class InsurancePolicyService {
         //return insurancePolicyRepository.findAll();
     }
 
-    public InsurancePolicy getInsurancePolicyById(int insurance_id){
-        InsurancePolicy insurancePolicy=insurancePolicyRepository.findById(insurance_id);
+    public InsurancePolicy getInsurancePolicyById(int id){
+        InsurancePolicy insurancePolicy=insurancePolicyRepository.findById(id);
             return insurancePolicy;
     }
 
@@ -64,8 +64,10 @@ public class InsurancePolicyService {
         return "Deleted successfully";
     }
 
-    public String updateInsurancePolicy(int id, InsurancePolicyDTO updatedInsurancePolicyDTO){
-
-        return "Updated successfully";
+    public String updateInsurancePolicy(int id, String coverageAmount){
+        InsurancePolicy insurancePolicy=insurancePolicyRepository.findById(id);
+        insurancePolicy.setCoverageAmount(coverageAmount);
+        insurancePolicyRepository.save(insurancePolicy);
+        return "Coverage amount updated successfully";
     }
 }

@@ -30,6 +30,7 @@ public class ClaimService {
 
         claim.setInsurancePolicy(insurancePolicy);
         insurancePolicyRepository.save(insurancePolicy);
+//        claimRepository.save(claim);
         return "Claim details successfully";
     }
 
@@ -38,4 +39,22 @@ public class ClaimService {
         List<Claim> claimPolicies = claimRepository.findAll();
         return claimPolicies;
     }
+
+    public Claim getClaimById(int id){
+        Claim claim=claimRepository.findById(id);
+        return  claim;
+    }
+
+    public String updateClaimStatus(int id, String claimStaus){
+        Claim claim= claimRepository.findById(id);
+        claim.setClaimStatus(claimStaus);
+        claimRepository.save(claim);
+        return "Claim status updated successfully";
+    }
+
+//    public String deleteClaimById(int id){
+//        Claim claim=claimRepository.findById(id);
+//        claimRepository.delete(claim);
+//        return "Claim by Id deleted successfully";
+//    }
 }

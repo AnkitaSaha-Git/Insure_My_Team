@@ -27,9 +27,9 @@ public class InsurancePolicyController {
         return insurancePolicyService.getAllInsurancePolicies();
     }
 
-    @GetMapping("/{insurance_id}")
-    public InsurancePolicy getInsurancePolicyById(@PathVariable int insurance_id){
-        return insurancePolicyService.getInsurancePolicyById(insurance_id);
+    @GetMapping("/{id}")
+    public InsurancePolicy getInsurancePolicyById(@PathVariable int id){
+        return insurancePolicyService.getInsurancePolicyById(id);
     }
 
     @DeleteMapping("/{id}")
@@ -37,10 +37,10 @@ public class InsurancePolicyController {
         return insurancePolicyService.deleteInsurancePolicy(id);
     }
 
-//    @PutMapping("/{id}")
-//    public String updateInsurancePolicy(@PathVariable int id, @RequestBody InsurancePolicy updatedInsurancePolicy){
-//
-//        return insurancePolicyService.updateInsurancePolicy(id,updatedInsurancePolicy);
-//    }
+    @PutMapping("/{id}")
+    public String updateCoverageAmount(@PathVariable int id, @RequestParam ("coverageAmount") String coverageAmount){
+
+        return insurancePolicyService.updateInsurancePolicy(id,coverageAmount);
+    }
 
 }
