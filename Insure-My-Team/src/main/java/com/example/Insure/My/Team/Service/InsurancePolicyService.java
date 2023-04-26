@@ -59,7 +59,10 @@ public class InsurancePolicyService {
             return insurancePolicy;
     }
 
-    public String deleteInsurancePolicy(int id){
+    public String deleteInsurancePolicy(int id) throws Exception{
+        if(!insurancePolicyRepository.existsById(id)){
+            throw new Exception("Id does not exists");
+        }
         insurancePolicyRepository.deleteById(id);
         return "Deleted successfully";
     }

@@ -36,8 +36,15 @@ public class ClaimController {
         return claimService.updateClaimStatus(id, claimStatus);
     }
 
-//    @DeleteMapping("/{id}")
-//    public String deleteClaimByID(@PathVariable int id){
-//        return claimService.deleteClaimById(id);
-//    }
+
+    //Used exception handling in case of incorrect id
+    @DeleteMapping("/{id}")
+    public String deleteClaimByID(@PathVariable int id){
+       try{
+           return claimService.deleteClaimById(id);
+          }
+       catch(Exception e){
+           return e.getMessage();
+       }
+    }
 }

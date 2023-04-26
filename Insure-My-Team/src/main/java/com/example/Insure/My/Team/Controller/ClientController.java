@@ -14,29 +14,33 @@ public class ClientController {
     @Autowired
     private ClientService clientService;
 
-    @GetMapping("/getAll")
+    @GetMapping
     private List<Client> getAllClients(){
         return clientService.getAllClients();
     }
 
-    @PostMapping("/add")
+    @PostMapping
     private String addClient(@RequestBody ClientAddDTO clientAddDTO){
         return clientService.addClient(clientAddDTO);
     }
 
-    @GetMapping("/get/{id}")
+    @GetMapping("/{id}")
     private Client getClientById(@PathVariable int id){
         return clientService.getClientById(id);
     }
 
-
-    @PutMapping("/put")
-    private String updateClientAddress(@RequestParam("id") int id, @RequestParam("add") String address){
+    @PutMapping("/{id}")
+    private String updateClientAddress(@PathVariable int id, @RequestParam("add") String address){
         return  clientService.updateClientAddress(id,address);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public String deleteClientById(@PathVariable int id){
-        return clientService.deleteClientById(id);
+    //Used exception handling in case of incorrect id
+    @DeleteMapping("/{id}")
+    public String deleteClientById(@PathVariable int id) {
+        try {
+            return clientService.deleteClientById(id);
+        } catch (Exception e) {
+            return e.getMessage();
+        }
     }
 }

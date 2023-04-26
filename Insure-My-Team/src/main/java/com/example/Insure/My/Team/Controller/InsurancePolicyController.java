@@ -16,13 +16,13 @@ public class InsurancePolicyController {
     @Autowired
     InsurancePolicyService insurancePolicyService;
 
-    @PostMapping("/addPolicy")
+    @PostMapping
     public String addPolicy(@RequestBody InsurancePolicyDTO insurancePolicyDTO){
 
         return insurancePolicyService.addPolicy(insurancePolicyDTO);
     }
 
-    @GetMapping("/getAll")
+    @GetMapping
     public List<InsurancePolicy> getAllInsurancePolicies(){
         return insurancePolicyService.getAllInsurancePolicies();
     }
@@ -32,9 +32,15 @@ public class InsurancePolicyController {
         return insurancePolicyService.getInsurancePolicyById(id);
     }
 
+
+    //Used exception handling in case of incorrect id
     @DeleteMapping("/{id}")
-    public String deleteInsurancePolicy(@PathVariable int id){
-        return insurancePolicyService.deleteInsurancePolicy(id);
+    public String deleteInsurancePolicy(@PathVariable int id) {
+        try {
+            return insurancePolicyService.deleteInsurancePolicy(id);
+        } catch (Exception e) {
+            return e.getMessage();
+        }
     }
 
     @PutMapping("/{id}")

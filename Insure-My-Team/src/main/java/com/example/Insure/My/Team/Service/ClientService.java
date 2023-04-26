@@ -49,7 +49,10 @@ public class ClientService {
         return "Updated successfully";
     }
 
-    public String deleteClientById(int id){
+    public String deleteClientById(int id) throws Exception{
+        if(!clientRepository.existsById(id)){
+            throw new Exception("Id does not exist");
+        }
         clientRepository.deleteById(id);
         return "Id deleted successfully";
     }

@@ -52,9 +52,12 @@ public class ClaimService {
         return "Claim status updated successfully";
     }
 
-//    public String deleteClaimById(int id){
-//        Claim claim=claimRepository.findById(id);
-//        claimRepository.delete(claim);
-//        return "Claim by Id deleted successfully";
-//    }
+    public String deleteClaimById(int id) throws Exception{
+        if(!claimRepository.existsById(id)){
+            throw new Exception("Id does not exists");
+        }
+
+        claimRepository.deleteById(id);
+        return "Claim by Id deleted successfully";
+    }
 }
