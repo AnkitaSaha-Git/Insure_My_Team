@@ -1,0 +1,40 @@
+Insurance Management Platform
+Description
+The Insurance Management Platform is a Spring Boot application that allows users to manage insurance policies, clients, and claims. The application provides RESTful APIs for creating, updating, deleting, and retrieving data for clients, insurance policies, and claims.
+
+Installation
+To install the Insurance Management Platform, follow these steps:
+
+Clone the repository to your local machine.
+Install the necessary dependencies by running mvn install.
+Start the application by running mvn spring-boot:run.
+
+Usage
+The Insurance Management Platform provides the following RESTful APIs:
+
+Clients
+GET /api/clients: Fetch all clients.
+GET /api/clients/{id}: Fetch a specific client by ID.
+POST /api/clients: Create a new client.
+PUT /api/clients/{id}: Update a client's information.
+DELETE /api/clients/{id}: Delete a client.
+Insurance Policies
+GET /api/policies: Fetch all insurance policies.
+GET /api/policies/{id}: Fetch a specific insurance policy by ID.
+POST /api/policies: Create a new insurance policy.
+PUT /api/policies/{id}: Update an insurance policy.
+DELETE /api/policies/{id}: Delete an insurance policy.
+Claims
+GET /api/claims: Fetch all claims.
+GET /api/claims/{id}: Fetch a specific claim by ID.
+POST /api/claims: Create a new claim.
+PUT /api/claims/{id}: Update a claim's information.
+DELETE /api/claims/{id}: Delete a claim.
+
+Dependencies
+The Insurance Management Platform depends on the following packages:
+
+Spring Web
+Spring Data JPA
+MYSQL 
+lombok
